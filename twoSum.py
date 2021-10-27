@@ -22,21 +22,16 @@ Output: [2,4]
 Input: nums = [0,4,3,0], target = 0
 Output: [0,3]"""
 
-inputlist = [0, 4, 3, 0]
-targetnum = 0
+inputlist = [-1, -2, -3, -4, -5]
+targetnum = -8
 
 
 def twoSum(nums, target):
-    for i in range(len(nums)):
-        if (target >= 0 and nums[i] <= target) or (target < 0 and nums[i] >= target):
-            num1 = nums[i]
-            idx1 = i
-            nums[i] = 'nan'  # avoid duplication
-            num2 = target - num1
-            if num2 in nums:
-                outputlist = [idx1, nums.index(num2)]
-                print(outputlist)
-                break
-
+    for idx, num in enumerate(nums):
+        num2 = target - num
+        if num2 in nums[idx+1:]:
+            outputlist = [nums.index(num), nums.index(num2, idx+1)]
+            print(outputlist)
+            break
 
 twoSum(inputlist, targetnum)
